@@ -13,6 +13,7 @@ export default function Layout({children}) {
             <Header title="Juan Carlos">
                 <Link href="/">Home</Link>
                 <Link href="/about">About</Link>
+                <Link href="/projects">Projects</Link>
                 <Link href="/contact">Contact</Link>
                 <Link href="/admin">Admin</Link>
             </Header>
