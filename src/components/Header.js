@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
 import { Avatar, Box, Button } from "@mui/material";
+import { useRouter } from "next/router";
 
 const Header = ({ src, title, children }) => {
+  const router = useRouter();
+
   return (
     <header>
       <Button
@@ -10,6 +13,7 @@ const Header = ({ src, title, children }) => {
           fontSize: "1.1rem",
           color: "black",
         }}
+        onClick={() => router.push('/')}
       >
         {title}
       </Button>
