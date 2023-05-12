@@ -4,7 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 
-export default function ProjectsForm({ onSubmit }) {
+export default function ProjectForm({ onSubmit }) {
     const defaultValues = {
         name: '',
         description: '',

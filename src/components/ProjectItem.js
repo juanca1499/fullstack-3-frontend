@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 
-export default function ProjectItem({ project }) {
+export default function ProjectItem({ project, admin }) {
   const router = useRouter();
 
   return (
@@ -20,13 +20,34 @@ export default function ProjectItem({ project }) {
         <Stack spacing={4}>
           <h3>{project.name}</h3>
           <div>{project.description}</div>
-          <Button
-            variant="contained"
-            size="large"
-            onClick={() => router.push(`/projects/${project._id}`)}
-          >
-            Use Case
-          </Button>
+          {!admin ? // Ternary operator
+            <Button
+              variant="contained"
+              size="large"
+              onClick={() => router.push(`/projects/${project._id}`)}
+            >
+              Use Case
+            </Button>
+            : // Else Instructions
+            <>
+              <Button
+              variant="contained"
+              size="large"
+              color='warning'
+              onClick={() => router.push(`/projects/${project._id}`)}
+              >
+              Edit
+              </Button>
+              <Button
+              variant="contained"
+              size="large"
+              color='error'
+              onClick={() => router.push(`/projects/${project._id}`)}
+              >
+              Delete
+              </Button>
+          </>
+          }
         </Stack>
       </Grid>
     </Grid>

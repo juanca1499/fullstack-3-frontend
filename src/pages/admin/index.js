@@ -35,7 +35,7 @@ export default function AdminPage() {
                 onClick={() => setIsNewProjectModalVisible(true)}>Add new project</Button>
             </div>
             {projects.map((project) => (
-                <ProjectItem key={project._id} project={project}/>
+                <ProjectItem key={project._id} project={project} admin={true}/>
             ))};
             <AddNewProjectModal 
             open= { isNewProjectModalVisible }

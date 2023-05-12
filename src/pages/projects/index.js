@@ -7,7 +7,7 @@ export default function ProjectsPage({ projects }) {
             <PageDescription title="Projects" 
             description="This page displays the projects which I have worked on" />
             {projects.map((project) => (
-                <ProjectItem key={project._id} project={project}/>
+                <ProjectItem key={project._id} project={project} />
             ))};
         </section>
     );
