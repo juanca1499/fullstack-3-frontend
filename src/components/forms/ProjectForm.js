@@ -4,13 +4,14 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 
-export default function ProjectForm({ onSubmit }) {
+export default function ProjectForm({ onSubmit, editValues }) {
     const defaultValues = {
         name: '',
         description: '',
         overview: '',
         tools: [],
         imageUrl: '',
+        projectLink: "",
     };
 
     const [skills, setSkills] = useState([]);
@@ -35,10 +36,11 @@ export default function ProjectForm({ onSubmit }) {
         overview: yup.string(),
         tools: yup.array(),
         imageUrl: yup.string(),
+        projectLink: yup.string(),
     });
 
     const { control, watch, reset, handleSubmit} = useForm({
-        defaultValues,
+        defaultValues: editValues || defaultValues,
         resolver: yupResolver(projectFormSchema),
         mode: 'all'
     });
@@ -69,7 +71,7 @@ export default function ProjectForm({ onSubmit }) {
                     render={ ({field, fieldState}) => (
                         <TextField 
                             {...field}
-                            label='Project description'
+                            label='Description'
                             variant='outlined'
                             fullWidth
                             multiline
@@ -120,6 +122,22 @@ export default function ProjectForm({ onSubmit }) {
                                 ))}
                             </Select>
                         )} />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Controller 
+                        control={ control }
+                        name='projectLink'
+                        render={ ({field, fieldState}) => (
+                            <TextField
+                            { ...field }
+                            label='Project link'
+                            variant='outlined'
+                            fullWidth
+                            error={ !!fieldState.error }
+                            helperText={ fieldState.error?.message }
+                            />
+                        )}
+                        />
                     </Grid>
                     <Grid item xs={12}>
                     <Controller control={ control } name='imageUrl' 

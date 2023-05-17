@@ -1,5 +1,5 @@
 import PageDescription from "@/components/PageDescription";
-import ProjectItem from "@/components/ProjectItem";
+import ProjectItem from "@/components/ProjectItem/Index";
 
 export default function ProjectsPage({ projects }) {
     return(
